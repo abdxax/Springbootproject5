@@ -22,7 +22,7 @@ public class StoreService {
     public Boolean update(Integer id,Store store){
       Store s=storeRepstory.findByIdEquals(id);
       if(s==null){
-          return  null;
+          return  false;
       }
       store.setId(s.getId());
       storeRepstory.save(store);

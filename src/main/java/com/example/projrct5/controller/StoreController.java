@@ -26,8 +26,11 @@ public class StoreController {
     }
     @PutMapping("/update/{id}")
     public ResponseEntity update(@PathVariable Integer id,@RequestBody @Valid Store store){
+        if(store==null){
+            return ResponseEntity.status(400).body("The store update is empty");
+        }
         Boolean res=storeService.update(id,store);
-        if(!res){
+        if(!res||res==null){
             return ResponseEntity.status(400).body("The Id is crrect");
         }
        return ResponseEntity.status(200).body("the Update Is Done ");
